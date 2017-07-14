@@ -7,6 +7,7 @@
             "w": "-86.38"
         },
         "tags": {
+            "route":"bus",
             "network": "IRTRAMMA",
             "public_transport:version": "2"
         }
@@ -21,12 +22,12 @@
         "agency_fare_url": ""
     },
     "feed_info": {
-        "publisher_name": "Inwayswemove.com",
-        "publisher_url": "http://inwayswemove.com",
+        "publisher_name": "Mapanica",
+        "publisher_url": "http://mapanica.net",
         "version":  "0.1",
         "start_date": "20161101",
         "end_date": "20171031"
     },
     "output_file": "data/ni-managua.zip",
-    "selector": "irtramma"
+    "selector": "managua"
 }

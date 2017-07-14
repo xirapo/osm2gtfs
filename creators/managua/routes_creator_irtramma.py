@@ -10,13 +10,14 @@ class RoutesCreatorIrtramma():
         for line_ref, line in sorted(lines.iteritems()):
             route = schedule.AddRoute(
                 short_name = line.ref.encode('utf-8'),
-                long_name = line.name
-                route_type = "Bus"
+                long_name = line.name,
+                route_type = "Bus",
                 route_id = line_ref)
 
             route.route_color = "ff0000"
             route.route_text_color = "ffffff"
 
+            print("Confirmando que esta usando este route")
             print("informacion del route: ", line.name , "agregada")
 
 
