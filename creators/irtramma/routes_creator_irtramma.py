@@ -1,6 +1,8 @@
+#coding=utf-8
+
 from creators.routes_creator import RoutesCreator
 
-class RoutesCreatorIrtramma():
+class RoutesCreatorIrtramma(RoutesCreator):
 
     def add_routes_to_schedule(self, schedule, data):
 
@@ -13,6 +15,11 @@ class RoutesCreatorIrtramma():
                 long_name = line.name,
                 route_type = "Bus",
                 route_id = line_ref)
+
+            # AddRoute method add default agency as default
+            route.agency_id = schedule.GetDefaultAgency().agency_id
+
+            route.route_desc = "Ruta de transporte publicoq"
 
             route.route_color = "ff0000"
             route.route_text_color = "ffffff"
