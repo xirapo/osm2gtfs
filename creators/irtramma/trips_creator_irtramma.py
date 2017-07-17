@@ -24,7 +24,7 @@ class TripsCreatorIrtramma(TripsCreator):
             for itinerary_id, itinerary in line.routes.iteritems():
 
                 # shape for itinerary
-                shape_id = add_shape(schedule, itinerary_id, itinerary)
+                shape_id = _add_shape(schedule, itinerary_id, itinerary)
 
                 #service periods | Horarios
                 operations = self._get_itinerary_operation(itinerary)

@@ -24,7 +24,7 @@ class StopsCreatorIrtramma(StopsCreator):
         print("Debug . agregando parada:", stop.name)
 
         #adding loose stops objects to route objects
-        self.add_stops_to_schedule(data)
+        self.add_stops_to_routes(data)
 
     def add_stops_to_routes(self, data):
 
