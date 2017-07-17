@@ -173,9 +173,9 @@ def load_stations(route, operation, filename='data/input_data_irtramma.json'):
                 stations = stations + [station.encode('utf-8')]
 
     # debug
-    # print("(json) estaciones encontradas: " + str(len(stations)))
-    # for estacion in stations:
-    #    print(estacion)
+        print("(json) estaciones encontradas: " + str(len(stations)))
+        for estacion in stations:
+            print(estacion)
 
     return stations
 
