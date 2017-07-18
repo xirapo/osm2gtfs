@@ -20,8 +20,13 @@ class TripsCreatorIrtramma(TripsCreator):
 
         # line (osm route master | gtfs route)
         for line_id, line in lines.iteritems():
+            # debug
+            print("DEBUG. procesando la línea:", line.name)
 
             for itinerary_id, itinerary in line.routes.iteritems():
+                # debug
+                print("DEBUG. procesando el itinerario", itinerary.name)
+                print("DEBUG. - from ", itinerary.fr)
 
                 # shape for itinerary
                 shape_id = _add_shape(schedule, itinerary_id, itinerary)
@@ -31,6 +36,7 @@ class TripsCreatorIrtramma(TripsCreator):
 
                 #operation | GTFS service periods
                 for operation in operations:
+                    print("--está procesando una operación")
                     service_period = self._create_service_period(schedule,
                      operation)
 
@@ -70,16 +76,16 @@ class TripsCreatorIrtramma(TripsCreator):
             input_to = operation["to"].encode('utf-8')
 
             # making sure the information from the object match
-            if input_fr == fr and input_ == to:
+            if input_fr == fr and input_to == to:
 
                 if operation["operacion"].encode('utf-8') == WD:
-                    operation.append(WD)
+                    operations.append(WD)
 
                 if operation["operacion"].encode('utf-8') == SAT:
-                    operation.append(SAT)
+                    operations.append(SAT)
 
-                if operation["operacion"].enconde('utf-8') == SUN:
-                    operation.append(SUN)
+                if operation["operacion"].encode('utf-8') == SUN:
+                    operations.append(SUN)
         return operations
 
     def _create_service_period(self, schedule, operation):
@@ -127,7 +133,7 @@ def _add_shape(schedule, route_id, osm_r):
     return shape_id
 
 def add_trips_for_route(schedule, gtfs_route, itinerary, service_period,
-                            shape_id, stops, horarios):
+                            shape_id, estaciones, horarios):
     # debug
     # print("DEBUG Adding trips for itinerary", itinerary.name)
 
@@ -137,7 +143,7 @@ def add_trips_for_route(schedule, gtfs_route, itinerary, service_period,
                                   service_period=service_period)
         while indice < len(estaciones):
             tiempo = viaje[indice]
-            estacion = stops[indice]
+            estacion = estaciones[indice]
             if tiempo != "-":
                 tiempo_parada = datetime.strptime(tiempo, "%H:%M")
                 tiempo_parada = str(tiempo_parada.time())
